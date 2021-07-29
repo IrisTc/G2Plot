@@ -220,7 +220,8 @@ function addWaterWave(
   const height = bbox.maxY - bbox.minY;
 
   for (let idx = 0; idx < waveCount; idx++) {
-    const factor = waveCount <= 1 ? 0 : idx / (waveCount - 1);
+    // 当水波数量为1时 水波的透明度opacity应该为1
+    const factor = waveCount <= 1 ? 1 : idx / (waveCount - 1);
     const wave = group.addShape('path', {
       name: `waterwave-path`,
       attrs: {
